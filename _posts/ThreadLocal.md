@@ -218,3 +218,8 @@ public class Thread implements Runnable {
 ##注意
 
 **如果`ThreadLocal`引用了非线程安全的对象，那么该对象依然是非线程安全的**
+
+##引用
+1. [When and how should I use a ThreadLocal variable?](http://stackoverflow.com/questions/817856/when-and-how-should-i-use-a-threadlocal-variable)
+2. [Purpose of ThreadLocal?](stackoverflow.com/questions/1490919/purpose-of-threadlocal)
+3. [正确理解ThreadLocal](http://www.iteye.com/topic/103804)
