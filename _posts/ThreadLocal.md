@@ -14,7 +14,7 @@ tags:
 
 ###怎么用？
 #### 每个线程都需要一个上下文环境
-```
+```java
 class StaticClass {
   static private ThreadLocal threadLocal = new ThreadLocal<User>();
 
@@ -36,24 +36,24 @@ doGet(HttpServletRequest req, HttpServletResponse resp) {
   }
 }
 
-```
+```java
 Now any code that requires the user object at any time can get hold of it by extracting it from the thread local, without needing to resort to those pesky extra parameters:
-```
+```java
 User user = StaticClass.getThreadLocal().get()
-```
+```java
 
 **If we do not use `ThreadLocal`, we need to pass the context info through the parameters.**
-```
+```java
 doGet(HttpServletRequest req, HttpServletResponse resp) {
   User user = getLoggedInUser(req);
   doSomething(user) // every method call into to pass in the context info
   doSomethingElse(user)
   renderResponse(resp,user)
 }
-```
+```java
 
 #### 某个对象的操作不是线程安全的，但想避免使用线程同步来访问。
-```
+```java
 public class Foo
 {
     // SimpleDateFormat is not thread-safe, so give one to each thread
@@ -70,13 +70,13 @@ public class Foo
         return formatter.get().format(date);
     }
 }
-```
+```java
 
 ###源码参考
 
 **`ThreadLocal<T>` 提供相应方法来操作`Thread`持有的`ThreadLocal.ThreadLocalMap`, 该map存有该线程对应的那份拷贝.**
 
-```
+```java
 public class ThreadLocal<T> {
     /**
      * ThreadLocals rely on per-thread hash maps attached to each thread
@@ -202,10 +202,10 @@ public class ThreadLocal<T> {
 
 }
 
-```
+```java
 
 **`Thread`类持有`ThreadLocal.ThreadLocalMap`**
-```
+```java
 public class Thread implements Runnable {
     ......
 
@@ -214,7 +214,7 @@ public class Thread implements Runnable {
     ThreadLocal.ThreadLocalMap threadLocals = null;  
     ......
 }
-```
+```java
 ##注意
 
 **如果`ThreadLocal`引用了非线程安全的对象，那么该对象依然是非线程安全的**

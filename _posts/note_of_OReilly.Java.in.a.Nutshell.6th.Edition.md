@@ -8,28 +8,28 @@ tags:
 ###Labeled statement
 A labeled statement is simply a statement that has been given a name by prepending an identifier and a colon to it. Labels are used by the **break** and **continue** statements. For example:
 
-```
+```java
 rowLoop: for(int r = 0; r < rows.length; r++) {        // Labeled loop
    colLoop: for(int c = 0; c < columns.length; c++) {  // Another one
      break rowLoop;                                    // Use a label
    }
 }
 
-```
+```java
 
 ###The try-with-resources Statement
 Java (since version 7) provides a very useful mechanism for automatically closing resources that require cleanup. This is known as try-with-resources, or **TWR**
-```
+```java
 try (InputStream is = new FileInputStream("/Users/ben/details.txt")) {
   // ... process the file and do not need to write catch and finally
 }
-```
+```java
 ###Checked and Unchecked Exceptions
 **Checked exceptions** arise in specific, well-defined circumstances, and very often are conditions from which the application may **be able to partially or fully recover**.
 Any exception object that is an `Error` is unchecked. There is also a subclass of `Exception` called `RuntimeException`¡ªand any subclass of `RuntimeException` is also an unchecked exception. All other exceptions are checked exceptions.
 
 ###Variable-Length Argument Lists
-```
+```java
 public static int max(int first, int... rest/*can only be the last parameter*/) {
     /* body omitted for now */
 }
@@ -39,9 +39,9 @@ max(1);
 max(1, 2, 3);
 max(1, 2, 3, 4);
 ...
-```
+```java
 yeah, this method is the same as:
-```
+```java
 public static int max(int first, int[] rest) {
     /* body omitted for now */
 }
@@ -49,7 +49,7 @@ public static int max(int first, int[] rest) {
 ...
 max(1, new int[]{2, 3, 4});
 ...
-```
+```java
 
 ###Lambda Expressions
 A **lambda expression** is essentially a *function* that does not have a name, and can be treated as a value in the language.
@@ -57,13 +57,13 @@ A **lambda expression** is essentially a *function* that does not have a name, a
 in Java, this means that a lambda is an **anonymous method** that is defined on some class (that is possibly unknown to the developer).
 
 The syntax for a lambda expression looks like this:
-```
+```java
 ( paramlist ) -> { statements }
-```
+```java
 eg:
-```
+```java
 Runnable r = () -> System.out.println("Hello World");
-```
+```java
 
 **Attention:**
 
@@ -83,16 +83,16 @@ However, an interface may wish to mark that some API methods are optional, and t
 
 ###Generics
 To indicate that a type is a container that holds instances of another reference type we enclose the payload type that the container holds within angle brackets:
-```
+```java
 List<CenteredCircle> shapes = new ArrayList<CenteredCircle>();
-```
+```java
 Container types are usually called `generic types`¡ªand they are declared like this:
-```
+```java
 interface Box<T> {
   void box(T t);
   T unbox();
 }
-```
+```java
 This indicates that the `Box` interface is a general construct, which can hold any type of payload. It isn¡¯t really a complete interface by itself¡ªit¡¯s more like a general description of a whole family of interfaces, one for each type that can be used in place of `T`.
 
 The syntax <T> has a special name¡ªit¡¯s called a `type parameter`, and another name for a generic type is a `parameterized type`. 
@@ -103,16 +103,16 @@ This poses a problem if the type that we want to work with is unknown at compile
 
 This is the simplest example  of Java¡¯s wildcard types.
 We can write expressions that involve the unknown type:
-```
+```java
 ArrayList<?> mysteryList = unknownList();
 Object o = mysteryList.get(0);
-```
+```java
 This is perfectly valid Java¡ª`ArrayList<?>` is a complete type that a variable can have, unlike `ArrayList<T>`.
 
 ###Enums and Annotations
 
 ###Singleton
-```
+```java
 public class Singleton {
     private final static Singleton instance = new Singleton();
     private static boolean initialized = false;
@@ -132,7 +132,7 @@ public class Singleton {
       return instance;
     }
 }
-```
+```java
 
 
 

@@ -29,7 +29,7 @@ Wait set manipulations can also be affected by the interruption status of a thre
 
 ###Ê¾Àý
 
-```
+```java
 public class Main extends Thread {
     @Override
     public void run() {
@@ -66,7 +66,7 @@ public class Main extends Thread {
 
 The out put is:
 
-```
+```java
 start
 wait start
 Wait() will release the lock!
